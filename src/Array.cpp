@@ -12,4 +12,5 @@ IntArray::IntArray(int size)
 
 IntArray::~IntArray()
 {
+	delete[] m_ptr;
 }
