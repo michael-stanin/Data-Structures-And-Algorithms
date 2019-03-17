@@ -18,4 +18,7 @@ public:
     bool IsEmpty() const {
         return m_size == 0;
     }
+
+	int& operator[](int index);
+	int operator[](int index) const;
 };

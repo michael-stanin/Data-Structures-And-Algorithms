@@ -14,3 +14,13 @@ IntArray::~IntArray()
 {
 	delete[] m_ptr;
 }
+
+int& IntArray::operator[](int index)
+{
+	return m_ptr[index];
+}
+
+int IntArray::operator[](int index) const
+{
+	return m_ptr[index];
+}
