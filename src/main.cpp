@@ -4,6 +4,7 @@
 
 namespace Module1
 {
+	using std::cin;
 	using std::cout;
 	using std::endl;
 
@@ -29,10 +30,35 @@ namespace Module1
 		arr[0] = 10;
 		cout << "arr[0] is " << arr[0] << endl;
 	}
+
+	void BoundsChecking()
+	{
+		try {
+			IntArray arr{ 10 };
+			for (int i = 0; i < arr.Size(); i++) {
+				arr[i] = (i + 1) * 10;
+			}
+
+			cout << "Array elements: ";
+			for (int i = 0; i < arr.Size(); i++) {
+				cout << arr[i] << ' ';
+			}
+
+			cout << "Array size is" << arr.Size() << endl;
+			cout << "Please enter an array index: ";
+			int index{};
+			cin >> index;
+
+			cout << "The element at index " << index << " is " << arr[index] << endl;
+		}
+		catch (const IndexOutOfBoundsException& e) {
+			cout << endl << "*** ERROR: Invalid array index!" << endl;
+		}
+	}
 }
 int main()
 {
 	//Module1::FirstSample();
-	Module1::AccessingElements();
-
+	//Module1::AccessingElements();
+	Module1::BoundsChecking();
 }
