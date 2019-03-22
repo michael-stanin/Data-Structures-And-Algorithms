@@ -71,6 +71,25 @@ namespace Module2
 
 		cout << "Array elements : " << arr << endl;
 	}
+
+	void SubtleBugWhenCopyingArray()
+	{
+		IntArray a{3};
+		a[0] = 10;
+		a[1] = 20;
+		a[2] = 30;
+
+		IntArray b = a;
+
+		cout << "a = " << a << endl;
+		cout << "b = " << b << endl;
+
+		b[1] = 100;
+		cout << endl << "b[1] = 100;" << endl << endl;
+
+		cout << "a = " << a << endl;
+		cout << "b = " << b << endl;
+	}
 }
 
 int main()
@@ -78,5 +97,6 @@ int main()
 	//Module1::FirstSample();
 	//Module1::AccessingElements();
 	//Module1::BoundsChecking();
-	Module2::ConvinientlyPrintArrays();
+	//Module2::ConvinientlyPrintArrays();
+	Module2::SubtleBugWhenCopyingArray();
 }
