@@ -1,6 +1,6 @@
 #include "Array.hpp"
 #include <iostream>
-
+#include <cassert>
 
 namespace Module1
 {
@@ -13,14 +13,15 @@ namespace Module1
 		cout << "Creating an empty array." << endl;
 		Array<int> a{};
 		cout << "a.Size() is " << a.Size() << endl;
-		//assert(a.IsEmpty());
+		assert(a.IsEmpty());
+		assert(a.Size() == 0);
 
 		cout << "-------------------------------------------" << endl;
 
 		cout << "Creating an array containing 10 elements" << endl;
 		Array<int> b{ 10 };
 		cout << "b.Size() is " << b.Size() << endl;
-		//assert(!b.IsEmpty());
+		assert(!b.IsEmpty());
 	}
 
 	void AccessingElements()
@@ -51,7 +52,7 @@ namespace Module1
 
 			cout << "The element at index " << index << " is " << arr[index] << endl;
 		}
-		catch (const IndexOutOfBoundsException& e) {
+		catch (const IndexOutOfBoundsException&) {
 			cout << endl << "*** ERROR: Invalid array index!" << endl;
 		}
 	}
