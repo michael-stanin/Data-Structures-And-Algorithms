@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class IndexOutOfBoundsException {};
 
@@ -9,6 +10,8 @@ private:
     int m_size{0};
 
 	bool IsValidIndex(int index) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const IntArray& arr);
 
 public:
     IntArray();

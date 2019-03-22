@@ -35,3 +35,14 @@ bool IntArray::IsValidIndex(int index) const
 {
 	return (index >= 0) && (index < m_size);
 }
+
+std::ostream& operator<<(std::ostream& os, const IntArray& arr)
+{
+    os << '[ ';
+    for (int i = 0; i < arr.Size(); i++) {
+        os << arr[i] << ' ';
+    }
+    os << ']' ;
+
+    return os;
+}

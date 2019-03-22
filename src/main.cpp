@@ -56,9 +56,27 @@ namespace Module1
 		}
 	}
 }
+
+namespace Module2
+{
+	using std::cout;
+	using std::endl;
+
+	void ConvinientlyPrintArrays()
+	{
+		IntArray arr{10};
+		for (int i = 0; i < arr.Size(); i++) {
+			a[i] = (i+1)*10;
+		}
+
+		cout << "Array elements : " << arr << endl;
+	}
+}
+
 int main()
 {
 	//Module1::FirstSample();
 	//Module1::AccessingElements();
-	Module1::BoundsChecking();
+	//Module1::BoundsChecking();
+	Module2::ConvinientlyPrintArrays();
 }
