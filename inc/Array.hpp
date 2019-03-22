@@ -27,6 +27,17 @@ public:
     explicit IntArray(int size);
     IntArray(const IntArray& source);
     IntArray& operator=(IntArray source);
+
+    IntArray(IntArray&& source) { //R-Value reference, temporary object - we can safely "steal" the data from it
+        // Transfer ownership from source
+        m_ptr = source.m_ptr;
+        m_size = source.m_size;
+
+        // Clear source
+        source.m_ptr = nullptr;
+        source.m_size = 0;
+    }
+
     ~IntArray();
 
     int Size() const {
