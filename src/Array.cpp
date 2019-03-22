@@ -23,6 +23,12 @@ IntArray::IntArray(const IntArray& source)
     }
 }
 
+IntArray& operator=(IntArray source) // Pass by value so this will create the copy
+{
+    swap(*this, source); // Memberwise swap
+    return *this;
+} // Calls the destructor of the copy
+
 IntArray::~IntArray()
 {
 	delete[] m_ptr;
