@@ -10,6 +10,19 @@ IntArray::IntArray(int size)
     }
 }
 
+IntArray::IntArray(const IntArray& source)
+{
+    if (!source.IsEmpty()) {
+        m_size = source.m_size;
+
+        m_ptr = new int[m_size]{};
+
+        for (int i = 0; i < m_size; i++) {
+            m_ptr[i] = source.m_ptr[i];
+        }
+    }
+}
+
 IntArray::~IntArray()
 {
 	delete[] m_ptr;

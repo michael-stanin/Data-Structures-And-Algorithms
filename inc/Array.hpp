@@ -16,6 +16,7 @@ private:
 public:
     IntArray();
     explicit IntArray(int size);
+    IntArray(const IntArray& source);
     ~IntArray();
 
     int Size() const {
