@@ -1,12 +1,14 @@
 #pragma once
-#include <iostream>
+#include <ostream>
+#include <utility>
 
 class IndexOutOfBoundsException {};
 
+template <typename T>
 class IntArray
 {
 private:
-    int* m_ptr{nullptr};
+    T* m_ptr{nullptr};
     int m_size{0};
 
 	bool IsValidIndex(int index) const;

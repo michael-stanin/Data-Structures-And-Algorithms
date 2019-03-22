@@ -1,11 +1,11 @@
 #include "Array.hpp"
-
+#include <cassert>
 
 IntArray::IntArray() = default;
 IntArray::IntArray(int size)
 {
     if (size != 0) {
-        m_ptr = new int[size]{};
+        m_ptr = new T[size]{};
         m_size = size;
     }
 }
@@ -15,7 +15,7 @@ IntArray::IntArray(const IntArray& source)
     if (!source.IsEmpty()) {
         m_size = source.m_size;
 
-        m_ptr = new int[m_size]{};
+        m_ptr = new T[m_size]{};
 
         for (int i = 0; i < m_size; i++) {
             m_ptr[i] = source.m_ptr[i];
