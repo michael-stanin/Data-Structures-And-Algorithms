@@ -5,7 +5,7 @@
 class IndexOutOfBoundsException {};
 
 template <typename T>
-class IntArray
+class Array
 {
 private:
     T* m_ptr{nullptr};
@@ -13,8 +13,8 @@ private:
 
 	bool IsValidIndex(int index) const;
 
-    friend std::ostream& operator<<(std::ostream& os, const IntArray& arr);
-    friend void swap(IntArray& arr1, IntArray& arr2) noexcept // This way the compiler will generate optimised code
+    friend std::ostream& operator<<(std::ostream& os, const Array& arr);
+    friend void swap(Array& arr1, Array& arr2) noexcept // This way the compiler will generate optimised code
                                                               // without properly dealing with exceptions
     {
         using std::swap;
@@ -25,12 +25,12 @@ private:
     }
 
 public:
-    IntArray();
-    explicit IntArray(int size);
-    IntArray(const IntArray& source);
-    IntArray& operator=(IntArray source);
+    Array();
+    explicit Array(int size);
+    Array(const Array& source);
+    Array& operator=(Array source);
 
-    IntArray(IntArray&& source) { //R-Value reference, temporary object - we can safely "steal" the data from it
+    Array(Array&& source) { //R-Value reference, temporary object - we can safely "steal" the data from it
         // Transfer ownership from source
         m_ptr = source.m_ptr;
         m_size = source.m_size;
@@ -40,7 +40,7 @@ public:
         source.m_size = 0;
     }
 
-    ~IntArray();
+    ~Array();
 
     int Size() const {
         return m_size;

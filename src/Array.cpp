@@ -1,8 +1,11 @@
 #include "Array.hpp"
 #include <cassert>
 
-IntArray::IntArray() = default;
-IntArray::IntArray(int size)
+template<typename T>
+Array::Array() = default;
+
+template<typename T>
+Array::Array(int size)
 {
     if (size != 0) {
         m_ptr = new T[size]{};
@@ -10,7 +13,8 @@ IntArray::IntArray(int size)
     }
 }
 
-IntArray::IntArray(const IntArray& source)
+template<typename T>
+Array::Array(const Array& source)
 {
     if (!source.IsEmpty()) {
         m_size = source.m_size;
@@ -23,18 +27,21 @@ IntArray::IntArray(const IntArray& source)
     }
 }
 
-IntArray& operator=(IntArray source) // Pass by value so this will create the copy
+template<typename T>
+Array& operator=(Array source) // Pass by value so this will create the copy
 {
     swap(*this, source); // Memberwise swap
     return *this;
 } // Calls the destructor of the copy
 
-IntArray::~IntArray()
+template<typename T>
+Array::~Array()
 {
 	delete[] m_ptr;
 }
 
-int& IntArray::operator[](int index)
+template<typename T>
+int& Array::operator[](int index)
 {
 	if (!IsValidIndex(index)) {
 		throw IndexOutOfBoundsException{};
@@ -42,7 +49,8 @@ int& IntArray::operator[](int index)
 	return m_ptr[index];
 }
 
-int IntArray::operator[](int index) const
+template<typename T>
+int Array::operator[](int index) const
 {
 	if (!IsValidIndex(index)) {
 		throw IndexOutOfBoundsException{};
@@ -50,12 +58,14 @@ int IntArray::operator[](int index) const
 	return m_ptr[index];
 }
 
-bool IntArray::IsValidIndex(int index) const
+template<typename T>
+bool Array::IsValidIndex(int index) const
 {
 	return (index >= 0) && (index < m_size);
 }
 
-std::ostream& operator<<(std::ostream& os, const IntArray& arr)
+template<typename T>
+std::ostream& operator<<(std::ostream& os, const Array& arr)
 {
     os << '[ ';
     for (int i = 0; i < arr.Size(); i++) {
