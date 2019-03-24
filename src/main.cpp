@@ -1,15 +1,16 @@
 #include "Array.hpp"
+#include "Stack.hpp"
 #include <functional>
 #include <iostream>
 #include <cassert>
 #include <vector>
 
+using std::cin;
+using std::cout;
+using std::endl;
+
 namespace Module1
 {
-	using std::cin;
-	using std::cout;
-	using std::endl;
-
 	void FirstSample()
 	{
 		cout << "Creating an empty array." << endl;
@@ -62,9 +63,6 @@ namespace Module1
 
 namespace Module2
 {
-	using std::cout;
-	using std::endl;
-
 	void ConvinientlyPrintArrays()
 	{
 		Array<int> arr{10};
@@ -97,9 +95,6 @@ namespace Module2
 
 namespace Module3
 {
-	using std::cin;
-	using std::cout;
-	using std::endl;
 	using std::function;
 	using std::vector;
 
@@ -187,6 +182,58 @@ namespace Module3
 
 }
 
+namespace Module4
+{
+	void StackDemo()
+	{
+		Stack<int> stack{ 10 };
+		assert(stack.IsEmpty());
+		assert(stack.MaxSize() == 10);
+
+		cout << "Stack created: " << endl;
+		cout << stack;
+
+		cout << "Pushing elements:" << endl;
+		cout << "stack.Push(10)" << endl;
+		cout << "stack.Push(20)" << endl;
+		cout << "stack.Push(64)" << endl;
+		stack.Push(10);
+		stack.Push(20);
+		stack.Push(64);
+		assert(stack.Size() == 3);
+		cout << stack;
+
+		cout << "stack.Pop(): " << stack.Pop() << endl;
+		cout << "stack.Pop(): " << stack.Pop() << endl;
+		assert(stack.Size() == 1);
+		assert(!stack.IsEmpty());
+
+		cout << "stack.Top(): " << stack.Top() << endl;
+		assert(stack.Size() == 1);
+
+		cout << "Current stack: " << endl;
+		cout << stack;
+	}
+
+	void StackOverflowTestDemo()
+	{
+		// Guard stack push against overflow
+		try {
+			Stack<int> stack{ 5 };
+			cout << "Created stack of max size: " << stack.MaxSize() << endl;
+
+			// Keep pushing until the stack overflows...
+			while (true) {
+				cout << "Trying: stack.Push(64); ...";
+				stack.Push(64);
+				cout << "OK." << endl;
+			}
+		}
+		catch (const StackOverflowException&) {
+			cout << endl << "*** Stack Overflow detected ***" << endl << endl;
+		}
+	}
+}
 
 int main()
 {
@@ -196,6 +243,8 @@ int main()
 	//Module2::ConvinientlyPrintArrays();
 	//Module2::SubtleBugWhenCopyingArray();
 	//Module3::TestLinearSearch();
-	Module3::TestBinarySearch();
+	//Module3::TestBinarySearch();
+	Module4::StackDemo();
+	Module4::StackOverflowTestDemo();
 	system("pause");
 }
