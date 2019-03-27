@@ -47,6 +47,10 @@ public:
 		return topElement;
 	}
 
+	T& Top() {
+		return m_array[m_top];
+	}
+
 	const T& Top() const {
 		return m_array[m_top];
 	}
