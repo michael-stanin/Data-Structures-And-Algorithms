@@ -1,4 +1,5 @@
 #include "Array.hpp"
+#include "List.hpp"
 #include "Stack.hpp"
 #include <functional>
 #include <iostream>
@@ -235,6 +236,35 @@ namespace Module4
 	}
 }
 
+namespace Module5
+{
+	void LinkedListDemo()
+	{
+		List<int> l{};
+		cout << "Created an empty list: " << l << endl << endl;
+
+		cout << "Inserting some elements..." << endl;
+		l.InsertHead(10);
+		l.InsertHead(64);
+		l.InsertHead(80);
+		l.InsertHead(77);
+		cout << "Current list: " << l << endl << endl;
+
+		cout << "Inserting a new element (500) after node with value 64." << endl;
+		auto pos = l.Find(64);
+		l.InsertAfter(pos, 500);
+		cout << "Current list: " << l << endl << endl;
+
+		cout << "Removing current head." << endl;
+		l.RemoveHead();
+		cout << "Current list: " << l << endl << endl;
+
+		cout << "Clearing the whole list." << endl;
+		l.Clear();
+		cout << "Current list: " << l << endl << endl;
+	}
+}
+
 int main()
 {
 	//Module1::FirstSample();
@@ -244,7 +274,8 @@ int main()
 	//Module2::SubtleBugWhenCopyingArray();
 	//Module3::TestLinearSearch();
 	//Module3::TestBinarySearch();
-	Module4::StackDemo();
-	Module4::StackOverflowTestDemo();
+	//Module4::StackDemo();
+	//Module4::StackOverflowTestDemo();
+	Module5::LinkedListDemo();
 	system("pause");
 }

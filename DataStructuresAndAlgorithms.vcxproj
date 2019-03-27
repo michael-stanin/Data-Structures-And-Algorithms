@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\Array.hpp" />
+    <ClInclude Include="inc\List.hpp" />
     <ClInclude Include="inc\Stack.hpp" />
   </ItemGroup>
   <ItemGroup>
